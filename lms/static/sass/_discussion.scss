@@ -595,6 +595,10 @@ body.discussion {
   box-shadow: none;
   line-height: 1.4;
 
+  .sr {
+    @extend %text-sr;
+  }
+
   .sidebar {
     @include box-sizing(border-box);
     float: left;
