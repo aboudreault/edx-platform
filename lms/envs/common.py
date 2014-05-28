@@ -35,7 +35,10 @@ from .discussionsettings import *
 
 from lms.lib.xblock.mixin import LmsBlockMixin
 
-from discussion_app.views import get_js_urls as discussion_get_js_urls
+from discussion_app.views import (
+    get_js_urls as discussion_get_js_urls,
+    get_css_urls as discussion_get_css_urls
+)
 
 ################################### FEATURES ###################################
 # The display name of the platform to be used in templates/emails/etc.
@@ -833,7 +836,7 @@ main_vendor_js = [
     'js/vendor/URI.min.js',
 ]
 
-discussion_js = discussion_get_js_urls()
+discussion_js = sorted(discussion_get_js_urls())
 staff_grading_js = sorted(rooted_glob(PROJECT_ROOT / 'static', 'coffee/src/staff_grading/**/*.js'))
 open_ended_js = sorted(rooted_glob(PROJECT_ROOT / 'static', 'coffee/src/open_ended/**/*.js'))
 notes_js = sorted(rooted_glob(PROJECT_ROOT / 'static', 'coffee/src/notes/**/*.js'))
@@ -891,9 +894,7 @@ PIPELINE_CSS = {
         'output_filename': 'css/lms-style-app-extend2.css',
     },
     'style-discussion-app': {
-        'source_filenames': [
-            'sass/discussion-app.css',
-        ],
+        'source_filenames': discussion_get_css_urls(),
         'output_filename': 'css/lms-style-discussion-app.css',
     },
     'style-course-vendor': {
