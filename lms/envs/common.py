@@ -116,7 +116,7 @@ FEATURES = {
     'SHIB_DISABLE_TOS': False,
 
     # Allows to configure the LMS to provide CORS headers to serve requests from other domains
-    'ENABLE_CORS_HEADERS': False,
+    'ENABLE_CORS_HEADERS': True,
 
     # Can be turned off if course lists need to be hidden. Effects views and templates.
     'COURSES_ARE_BROWSABLE': True,
@@ -253,7 +253,7 @@ FEATURES = {
     'ADVANCED_SECURITY': False,
 
     # Turn on/off the Open edX API
-    'API': False,
+    'API': True,
 
     # Show a "Download your certificate" on the Progress page if the lowest
     # nonzero grade cutoff is met
@@ -1296,7 +1296,9 @@ if FEATURES.get('ENABLE_CORS_HEADERS'):
         'cors_csrf.middleware.CorsCSRFMiddleware',
     ) + MIDDLEWARE_CLASSES
     CORS_ALLOW_CREDENTIALS = True
-    CORS_ORIGIN_WHITELIST = ()
+    CORS_ORIGIN_WHITELIST = ('devstack.local', 'apros.devstack.local')
+    CORS_ORIGIN_REGEX_WHITELIST = ('^http?://(\w+\.)?devstack\.local$',)
+
 
 ###################### Registration ##################################
 
