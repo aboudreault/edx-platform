@@ -850,7 +850,7 @@ main_vendor_js = [
     'js/vendor/URI.min.js',
 ]
 
-discussion_js = sorted(discussion_get_js_urls())
+discussion_js = discussion_get_js_urls())
 staff_grading_js = sorted(rooted_glob(PROJECT_ROOT / 'static', 'coffee/src/staff_grading/**/*.js'))
 open_ended_js = sorted(rooted_glob(PROJECT_ROOT / 'static', 'coffee/src/open_ended/**/*.js'))
 notes_js = sorted(rooted_glob(PROJECT_ROOT / 'static', 'coffee/src/notes/**/*.js'))
